@@ -1,9 +1,10 @@
 {
   "name": "generator-joker",
   "version": "0.0.1",
-  "description": "A simple meteor generator for a simple meteor app",
+  "description": "A simple generator for a modern meteor app",
   "files": [
-    "app"
+    "app",
+    "collection"
   ],
   "keywords": ["yeoman-generator"],
   "dependencies": {
