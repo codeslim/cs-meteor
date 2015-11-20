@@ -70,6 +70,9 @@ module.exports = generators.Base.extend({
     ['collections', 'methods', 'routes'].forEach(
       dir => mkdirp.sync(`lib/${dir}`)
     );
+    ['insert', 'read', 'remove', 'update'].forEach(
+      crud => mkdirp.sync(`lib/methods/${crud}`)
+    );
 
     ['client', 'server', 'lib'].forEach(
       dir => {
