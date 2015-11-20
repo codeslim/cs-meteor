@@ -17,38 +17,46 @@ module.exports = generators.Base.extend({
 
     this.prompt([
       {
-        message: 'Which front-end framework will you use?',
+        message: 'Frontend framework?',
         name: 'front',
         type: 'list',
         choices: ['angular', 'react', 'blaze'],
         default: 'blaze'
       },
       {
-        message: 'Which schema system will you use?',
+        message: 'Schema system?',
         name: 'schemaSystem',
         type: 'list',
         choices: ['none', 'aldeed:simple-schema'],
         default: 'aldeed:simple-schema'
       },
       {
-        message: 'Which collection system will you use?',
+        message: 'Collection system?',
         name: 'collectionSystem',
         type: 'list',
         choices: ['none', 'aldeed:collection2'],
         default: 'aldeed:collection2'
       },
       {
-        message: 'Which router will you use?',
+        message: 'Router?',
         name: 'router',
         type: 'list',
         choices: ['none', 'iron:router', 'kadira:flow-router'],
         default: 'kadira:flow-router'
+      },
+      {
+        message: 'User system?',
+        name: 'userSystem',
+        type: 'list',
+        choices: ['none', 'accounts-base'],
+        default: 'accounts-base'
       }
     ], function(answers) {
       this.front = answers.front;
       this.schemaSystem = answers.schemaSystem;
       this.collectionSystem = answers.collectionSystem;
       this.router = answers.router;
+      this.userSystem = answers.userSystem;
       done();
     }.bind(this));
   },
@@ -58,6 +66,7 @@ module.exports = generators.Base.extend({
     this.config.set('schemaSystem', this.schemaSystem);
     this.config.set('collectionSystem', this.collectionSystem);
     this.config.set('router', this.router);
+    this.config.set('userSystem', this.userSystem);
   },
 
   writing: function() {
