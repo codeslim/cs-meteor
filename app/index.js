@@ -12,7 +12,7 @@ module.exports = generators.Base.extend({
     this.config.set('appname', this.appname ? this.appname : this.name);
   },
 
-  prompting: function () {
+  prompting: function() {
     let done = this.async();
 
     this.prompt([
@@ -86,7 +86,7 @@ module.exports = generators.Base.extend({
     ['client', 'server', 'lib'].forEach(
       dir => {
         this.fs.copyTpl(
-          this.templatePath('startup.js'),
+          this.templatePath('startup.ejs'),
           this.destinationPath(`${dir}/startup.js`)
         );
       }
