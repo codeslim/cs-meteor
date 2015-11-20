@@ -1,0 +1,10 @@
+Schemas.<%= schemaName %> = new SimpleSchema({
+  <% if (properties.length > 0) {
+      var lastElement = properties[properties.length - 1];
+      for (var property of properties) { %>
+      '<%= property.name %>': {
+        type: <%= property.type %>
+      }<%= (property === lastElement ? '' : ','); %>
+    <% }
+  } %>
+});

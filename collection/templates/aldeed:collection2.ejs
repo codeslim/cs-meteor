@@ -1,0 +1,15 @@
+<%= collectionVarName %> = new Mongo.Collection('<%= collectionName %>', {  idGeneration: 'MONGO' });
+
+<%= collectionVarName %>.allow({
+  insert: () => false,
+  update: () => false,
+  remove: () => false
+});
+
+<%= collectionVarName %>.deny({
+  insert: () => true,
+  update: () => true,
+  remove: () => true
+});
+
+<%= collectionVarName %>.attachSchema(Schemas.<%= schemaName %>);
