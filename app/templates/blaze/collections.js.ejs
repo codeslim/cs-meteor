@@ -1,3 +1,5 @@
 if (typeof Collections === 'undefined') Collections = {}
 
-Template.registerHelper('Collections', Collections);
+if (Meteor.isClient) {
+  Template.registerHelper('Collections', Collections);  
+}

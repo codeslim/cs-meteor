@@ -1,0 +1,10 @@
+const homeRoutes = FlowRouter.group({
+  name: 'home'
+});
+
+homeRoutes.route('/', {
+  name: 'index',
+  action() {
+    <%= front %>Layout.render('default', { yield: '' });
+  }
+});

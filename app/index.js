@@ -96,6 +96,7 @@ module.exports = generators.Base.extend({
     );
 
     require(`./${this.front}`).writing(this);
+    require(`./${this.router}`).writing(this);
   },
 
   install: function() {
@@ -107,6 +108,13 @@ module.exports = generators.Base.extend({
       case 'react':
         addList.push(this.front);
         removeList.push('blaze-html-templates');
+        break;
+      case 'blaze':
+        switch(this.router) {
+          case 'kadira:flow-router':
+            addList.push('kadira:blaze-layout');
+            break;
+        }
     }
 
     [this.schemaSystem, this.collectionSystem, this.router].forEach(
