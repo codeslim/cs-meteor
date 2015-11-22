@@ -75,6 +75,8 @@ module.exports = generators.Base.extend({
     this.fs.commit([], function() { });
 
     mkdirp.sync('client');
+    mkdirp.sync('client/templates');
+
     mkdirp.sync('server/publications');
     ['collections', 'methods', 'routes', 'helpers'].forEach(
       dir => mkdirp.sync(`lib/${dir}`)
