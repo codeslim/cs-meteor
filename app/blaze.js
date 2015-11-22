@@ -21,7 +21,8 @@ module.exports = class {
 
     [`toJSON.js.ejs`,
       `schemas.js.ejs`,
-      `collections.js.ejs`].forEach(
+      `collections.js.ejs`,
+      `keysIn.js.ejs`].forEach(
         file => {
           self.fs.copyTpl(
             self.templatePath(`blaze/${file}`),

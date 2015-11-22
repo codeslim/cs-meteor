@@ -4,7 +4,9 @@
   </header>
 
   <nav>
-    <!-- List of all collections -->
+    {{#each collection in keysIn Collections}}
+      {{collection}}
+    {{ /each }}
   </nav>
 
   <section>
