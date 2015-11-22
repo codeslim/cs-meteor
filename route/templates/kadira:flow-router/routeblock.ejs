@@ -1,0 +1,7 @@
+<%= groupVar %>.route('<%= path %>', {
+  action() {
+    <%= front %>Layout.render('<%= layout %>', {
+      yield: '<%= template %>'<% args.forEach(arg => { -%><%= `,\n      ${arg}: this.params.${arg}` %><% }) %>
+    })
+  }
+});
