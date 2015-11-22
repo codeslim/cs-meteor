@@ -76,7 +76,7 @@ module.exports = generators.Base.extend({
 
     mkdirp.sync('client');
     mkdirp.sync('server/publications');
-    ['collections', 'methods', 'routes'].forEach(
+    ['collections', 'methods', 'routes', 'helpers'].forEach(
       dir => mkdirp.sync(`lib/${dir}`)
     );
     ['insert', 'read', 'remove', 'update'].forEach(
@@ -90,6 +90,17 @@ module.exports = generators.Base.extend({
           this.destinationPath(`${dir}/startup.js`)
         );
       }
+    );
+
+    [`toJSON.${this.front}.ejs`,
+      `schemas.${this.front}.ejs`,
+      `collections.${this.front}.ejs`].forEach(
+        file => {
+          this.fs.copyTpl(
+            this.templatePath(file),
+            this.destinationPath(`lib/helpers/${file.substr(0, file.indexOf('.')) + '.js'}`)
+          );
+        }
     );
   },
 
