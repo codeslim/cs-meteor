@@ -92,16 +92,7 @@ module.exports = generators.Base.extend({
       }
     );
 
-    [`toJSON.${this.front}.ejs`,
-      `schemas.${this.front}.ejs`,
-      `collections.${this.front}.ejs`].forEach(
-        file => {
-          this.fs.copyTpl(
-            this.templatePath(file),
-            this.destinationPath(`lib/helpers/${file.substr(0, file.indexOf('.')) + '.js'}`)
-          );
-        }
-    );
+    require(`./${this.front}`).writing(this);
   },
 
   install: function() {
