@@ -6,7 +6,7 @@ let _ = require('lodash-inflection');
 module.exports = generators.NamedBase.extend({
   constructor: function() {
     generators.NamedBase.apply(this, arguments);
-    // Here we should assert that this.name is a word (^\w+$)
+    if (!this.name.match(/^\w+$/)) this.env.error('Your collection name shoud match /^\\w+$/');
   },
 
   _askForProperty: function() {
