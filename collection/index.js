@@ -38,7 +38,15 @@ module.exports = generators.NamedBase.extend({
     },
     answers => {
       if (answers.moreProperties === false) {
-        done();
+        this.prompt({
+          message: 'Add it to its own collection?',
+          name: 'addToCollection',
+          type: 'confirm'
+        },
+        answers => {
+          this.addToCollection = answers.addToCollection;
+          done();
+        });
       } else {
         this._askForProperty();
       }
@@ -68,7 +76,8 @@ module.exports = generators.NamedBase.extend({
         collectionVarName,
         collectionName,
         schemaSystem,
-        schemaName
+        schemaName,
+        addToCollection: this.addToCollection
       }
     );
   }
