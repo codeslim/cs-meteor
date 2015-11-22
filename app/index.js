@@ -2,6 +2,7 @@
 
 let generators = require('yeoman-generator');
 let mkdirp = require('mkdirp');
+let path = require('path');
 
 module.exports = generators.Base.extend({
   constructor: function() {
@@ -9,7 +10,7 @@ module.exports = generators.Base.extend({
 
     this.argument('appname', { type: String, required: false });
     this.destinationRoot(`${this.destinationRoot()}/${this.appname ? this.appname : ''}`);
-    this.config.set('appname', this.appname ? this.appname : this.name);
+    this.config.set('appname', this.appname !== undefined ? this.appname : path.basename(this.destinationRoot()));
   },
 
   prompting: function() {
