@@ -1,15 +1,15 @@
-<%= collectionVarName %> = new Mongo.Collection('<%= collectionName %>', {  idGeneration: 'MONGO' });
+Collections.<%= collectionVarName %> = new Mongo.Collection('<%= collectionName %>', {  idGeneration: 'MONGO' });
 
-<%= collectionVarName %>.allow({
+Collections.<%= collectionVarName %>.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
 });
 
-<%= collectionVarName %>.deny({
+Collections.<%= collectionVarName %>.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
 });
 
-<%= collectionVarName %>.attachSchema(Schemas.<%= schemaName %>);
+Collections.<%= collectionVarName %>.attachSchema(Schemas.<%= schemaName %>);
