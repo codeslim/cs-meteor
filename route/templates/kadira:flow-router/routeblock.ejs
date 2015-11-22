@@ -1,8 +1,8 @@
 <%= groupVar %>.route('<%= path %>', {
   name: '<%= name %>',
-  action() {
+  action(params, queryParams) {
     <%= front %>Layout.render('<%= layout %>', {
-      yield: '<%= template %>'<% args.forEach(arg => { -%><%= `,\n      ${arg}: this.params.${arg}` %><% }) %>
+      yield: '<%= template %>'<% args.forEach(arg => { -%><%= `,\n      ${arg}: params.${arg}` %><% }) %>
     })
   }
 });

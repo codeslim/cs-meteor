@@ -36,7 +36,7 @@ module.exports = class {
                 routeBlock = node;
               }
           if (routeBlock && node.type === 'Property' &&
-              node.key.name === 'name' && node.value.name === self.name) {
+              node.key.name === 'name' && node.value.value === self.name) {
                 objectBlock = node;
               }
         },
@@ -52,7 +52,7 @@ module.exports = class {
       });
 
       if (!routeBlock) ast.body = ast.body.concat(newRouteBlock);
-      self.fs.write(outputFile, escodegen.generate(ast));
+      self.fs.write(outputFile, escodegen.generate(ast, { format: { semicolons: false } }));
     } else {
       self.fs.copyTpl(
         self.templatePath('kadira:flow-router/routefile.ejs'),
