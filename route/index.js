@@ -1,18 +1,19 @@
 'use strict';
 
 let generators = require('yeoman-generator');
-let _ = require('lodash-inflection');
 
 module.exports = generators.Base.extend({
   constructor: function() {
     generators.Base.apply(this, arguments);
   },
 
+  _optionOrPrompt: require('yeoman-option-or-prompt'),
+
   prompting: function() {
     let done = this.async();
     let router = this.config.get('router');
 
-    this.prompt([
+    this._optionOrPrompt([
       {
         message: 'Group name?',
         name: 'group',

@@ -6,8 +6,11 @@
     "app",
     "collection"
   ],
-  "keywords": ["yeoman-generator"],
+  "keywords": [
+    "yeoman-generator"
+  ],
   "dependencies": {
-    "yeoman-generator": "^0.20.2"
+    "yeoman-generator": "^0.20.2",
+    "yeoman-option-or-prompt": "^1.0.2"
   }
 }

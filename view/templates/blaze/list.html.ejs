@@ -1,0 +1,10 @@
+<template name='<%= template %>'>
+  <h1><%= tableTitle %></h1>
+  <table>
+    {{#each <%= resource %>}}
+      <tr>
+        <td>{{this}}</td>
+      </tr>
+    {{/each}}
+  </table>
+</template>
