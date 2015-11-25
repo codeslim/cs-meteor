@@ -110,6 +110,7 @@ module.exports = generators.Base.extend({
         removeList.push('blaze-html-templates');
         break;
       case 'blaze':
+        addList.push('aldeed:autoform');
         switch(this.router) {
           case 'kadira:flow-router':
             addList.push('kadira:blaze-layout');

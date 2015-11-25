@@ -1,0 +1,10 @@
+<template name='<%= template %>'>
+  {{#autoForm id='new<%= group %>' schema=Schemas.<%= group %>Schema}}
+    {{#each afFieldNames}}
+      {{> afQuickField name=this.name}}
+    {{/each}}
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  {{/autoForm}}
+</template>
