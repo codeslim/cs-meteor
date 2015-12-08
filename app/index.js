@@ -68,6 +68,9 @@ module.exports = generators.Base.extend({
     this.config.set('collectionSystem', this.collectionSystem);
     this.config.set('router', this.router);
     this.config.set('userSystem', this.userSystem);
+
+    this.frontClass = require(`./${this.front}`);
+    this.routerClass = require(`./${this.router}`);
   },
 
   writing: function() {
@@ -95,19 +98,19 @@ module.exports = generators.Base.extend({
       }
     );
 
-    require(`./${this.front}`).writing.bind(this);
-    require(`./${this.router}`).writing.bind(this);
+    this.frontClass.writing.bind(this);
+    this.routerClass.writing.bind(this);
   },
 
   install: function() {
     let addList = ['add'];
     let removeList = ['remove'];
 
-    addList.concat(require(`./${this.front}`).getPackagesToAdd.bind(this));
-    removeList.concat(require(`./${this.front}`).getPackagesToRemove.bind(this));
+    addList.concat(this.frontClass.getPackagesToAdd.bind(this));
+    removeList.concat(this.frontClass.getPackagesToRemove.bind(this));
 
-    addList.concat(require(`./${this.router}`).getPackagesToAdd.bind(this));
-    removeList.concat(require(`./${this.router}`).getPackagesToRemove.bind(this));
+    addList.concat(this.routerClass.getPackagesToAdd.bind(this));
+    removeList.concat(this.routerClass.getPackagesToRemove.bind(this));
 
     [this.schemaSystem, this.collectionSystem, this.router].forEach(
       component => {
