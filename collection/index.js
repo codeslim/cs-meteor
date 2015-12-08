@@ -65,7 +65,7 @@ module.exports = generators.NamedBase.extend({
     let fileName = `${collectionName}.js`;
 
     let schemaSystem = this.config.get('schemaSystem');
-    let schemaName = `${collectionVarName}Schema`;
+    let schemaName = `${collectionVarName}`;
 
     this.fs.copyTpl(
       this.templatePath('collection.ejs'),
