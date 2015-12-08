@@ -33,7 +33,7 @@ module.exports = class {
     }
 
     static getPackagesToAdd() {
-      return ['aldeed:autoform', 'kadira:flow-router'];
+      return ['aldeed:autoform'];
     }
 
     static getPackagesToRemove() {

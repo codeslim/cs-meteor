@@ -106,6 +106,9 @@ module.exports = generators.Base.extend({
     addList.concat(require(`./${this.front}`).getPackagesToAdd.bind(this));
     removeList.concat(require(`./${this.front}`).getPackagesToRemove.bind(this));
 
+    addList.concat(require(`./${this.router}`).getPackagesToAdd.bind(this));
+    removeList.concat(require(`./${this.router}`).getPackagesToRemove.bind(this));
+
     [this.schemaSystem, this.collectionSystem, this.router].forEach(
       component => {
         if (component !== 'none') addList.push(component);
