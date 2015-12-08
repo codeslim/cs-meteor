@@ -21,7 +21,7 @@ module.exports = generators.Base.extend({
         message: 'Frontend framework?',
         name: 'front',
         type: 'list',
-        choices: ['angular', 'react', 'blaze'],
+        choices: ['blaze'],//'angular', 'react', ],
         default: 'blaze'
       },
       {
@@ -42,7 +42,7 @@ module.exports = generators.Base.extend({
         message: 'Router?',
         name: 'router',
         type: 'list',
-        choices: ['none', 'iron:router', 'kadira:flow-router'],
+        choices: ['none', 'kadira:flow-router'],//, 'iron:router'],
         default: 'kadira:flow-router'
       },
       {
@@ -95,28 +95,16 @@ module.exports = generators.Base.extend({
       }
     );
 
-    require(`./${this.front}`).writing(this);
-    require(`./${this.router}`).writing(this);
+    require(`./${this.front}`).writing.bind(this);
+    require(`./${this.router}`).writing.bind(this);
   },
 
   install: function() {
     let addList = ['add'];
     let removeList = ['remove'];
 
-    switch(this.front) {
-      case 'angular':
-      case 'react':
-        addList.push(this.front);
-        removeList.push('blaze-html-templates');
-        break;
-      case 'blaze':
-        addList.push('aldeed:autoform');
-        switch(this.router) {
-          case 'kadira:flow-router':
-            addList.push('kadira:blaze-layout');
-            break;
-        }
-    }
+    addList.concat(require(`./${this.front}`).getPackagesToAdd.bind(this));
+    removeList.concat(require(`./${this.front}`).getPackagesToRemove.bind(this));
 
     [this.schemaSystem, this.collectionSystem, this.router].forEach(
       component => {

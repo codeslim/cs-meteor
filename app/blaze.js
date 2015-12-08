@@ -4,16 +4,16 @@ let mkdirp = require('mkdirp');
 let path = require('path');
 
 module.exports = class {
-  static writing(self) {
+  static writing() {
     mkdirp.sync('client/templates/layouts');
 
     ['default.html.ejs', 'default.css.ejs'].forEach(
       file => {
-        self.fs.copyTpl(
-          self.templatePath(`blaze/${file}`),
-          self.destinationPath(`client/templates/layouts/${path.basename(file, '.ejs')}`),
+        this.fs.copyTpl(
+          this.templatePath(`blaze/${file}`),
+          this.destinationPath(`client/templates/layouts/${path.basename(file, '.ejs')}`),
           {
-            appname: self.config.get('appname')
+            appname: this.config.get('appname')
           }
         );
       }
@@ -24,11 +24,19 @@ module.exports = class {
       `collections.js.ejs`,
       `keysIn.js.ejs`].forEach(
         file => {
-          self.fs.copyTpl(
-            self.templatePath(`blaze/${file}`),
-            self.destinationPath(`lib/helpers/${path.basename(file, '.ejs')}`)
+          this.fs.copyTpl(
+            this.templatePath(`blaze/${file}`),
+            this.destinationPath(`lib/helpers/${path.basename(file, '.ejs')}`)
           );
         }
       );
+    }
+
+    static getPackagesToAdd() {
+      return ['aldeed:autoform', 'kadira:flow-router'];
+    }
+
+    static getPackagesToRemove() {
+      return [];
     }
   }
