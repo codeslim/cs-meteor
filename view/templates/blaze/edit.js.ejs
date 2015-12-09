@@ -1,0 +1,3 @@
+Template.<%= template %>.helpers({
+  <%= resource %>: () => Collections.<%= collection %>.findOne(new Mongo.ObjectID(FlowRouter.getParam('_id')))
+});

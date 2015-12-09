@@ -76,6 +76,7 @@ module.exports = generators.Base.extend({
       case 'edit':
         path = `/${group.toLowerCase()}/:_id/edit`;
         template = `edit${group}`;
+        tableTitle = _.capitalize(this.resource.toLowerCase());
         break;
     }
 
