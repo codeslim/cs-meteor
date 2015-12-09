@@ -1,9 +1,16 @@
 <template name='<%= template %>'>
   <h1><%= tableTitle %></h1>
   <table>
-    {{#each <%= resource %>}}
+    <tr>
+      {{#each field in fields}}
+        <th>{{field}}</th>
+      {{/each}}
+    </tr>
+    {{#each doc in <%= resource %>}}
       <tr>
-        <td>{{this}}</td>
+        {{#each field in fields}}
+          <td>{{valueFor doc field}}</td>
+        {{/each}}
       </tr>
     {{/each}}
   </table>

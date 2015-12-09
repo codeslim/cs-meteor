@@ -5,18 +5,18 @@ let path = require('path');
 let _ = require('lodash');
 
 module.exports = class {
-  static writing(self) {
-    self.fs.copyTpl(
-      self.templatePath('flowrouter/home.js.ejs'),
-      self.destinationPath('lib/routes/home.js'),
+  static writing() {
+    this.fs.copyTpl(
+      this.templatePath('flowrouter/home.js.ejs'),
+      this.destinationPath('lib/routes/home.js'),
       {
-        front: _.capitalize(self.front)
+        front: _.capitalize(this.front)
       }
     );
   }
 
   static getPackagesToAdd() {
-    return ['kadira:flow-router'];
+    return ['kadira:flow-router', 'kadira:blaze-layout'];
   }
 
   static getPackagesToRemove() {

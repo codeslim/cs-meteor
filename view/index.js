@@ -52,19 +52,22 @@ module.exports = generators.Base.extend({
   },
 
   configuring: function() {
+    this.front = this.config.get('front');
   },
 
   writing: function() {
     mkdirp(`client/templates/${this.resource}`);
-    let path, template, group = _.capitalize(this.resource.toLowerCase());
+    let path, template, group = _.capitalize(this.resource.toLowerCase()), tableTitle;
     switch (this.kind) {
       case 'list':
         path = `/${group.toLowerCase()}/`;
         template = `list${group}`;
+        tableTitle = _.capitalize(lodash_inflection.pluralize(this.resource.toLowerCase()));
         break;
       case 'show':
         path = `/${group.toLowerCase()}/:_id`;
         template = `show${group}`;
+        tableTitle = _.capitalize(this.resource.toLowerCase());
         break;
       case 'new':
         path = `/${group.toLowerCase()}/new`;
@@ -80,19 +83,10 @@ module.exports = generators.Base.extend({
       template,
       tableTitle: _.capitalize(lodash_inflection.pluralize(this.resource.toLowerCase())),
       resource: lodash_inflection.pluralize(this.resource.toLowerCase()),
-      group
+      collection: group
     };
 
-    this.fs.copyTpl(
-      this.templatePath(`blaze/${this.kind}.html.ejs`),
-      this.destinationPath(`client/templates/${this.resource}/${this.kind}.html`),
-      options
-    );
-    this.fs.copyTpl(
-      this.templatePath(`blaze/${this.kind}.js.ejs`),
-      this.destinationPath(`client/templates/${this.resource}/${this.kind}.js`),
-      options
-    );
+    require(`./${this.front}.js`).writing.bind(this)(options);
 
     if (this.route) {
       this.composeWith('joker:route', { options: {

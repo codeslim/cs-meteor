@@ -1,5 +1,5 @@
 <template name='<%= template %>'>
-  {{#autoForm id='new<%= group %>' schema=Schemas.<%= group %>Schema}}
+  {{#autoForm id='new<%= collection %>' schema=Schemas.<%= collection %>}}
     {{#each afFieldNames}}
       {{> afQuickField name=this.name}}
     {{/each}}
