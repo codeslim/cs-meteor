@@ -1,0 +1,11 @@
+Meteor.methods({
+  remove<%= collection %>(doc) {
+    check(doc, Schemas.<%= collection %>);
+
+    try {
+      return Collection.<%= collection %>.remove(doc);
+    } catch(exception) {
+      return exception;
+    }
+  }
+});

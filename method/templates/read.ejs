@@ -1,0 +1,17 @@
+Meteor.methods({
+  read<%= collection %>(id) {
+    check(argument, Object);
+
+    if (!Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
+    
+    var document = Collection.findOne(id);
+
+    if (!document) {
+      throw new Meteor.Error('document-not-found', 'No documents found matching this query.');
+    }
+
+    return document;
+  }
+});
