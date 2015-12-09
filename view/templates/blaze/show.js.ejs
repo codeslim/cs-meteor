@@ -1,3 +1,5 @@
 Template.<%= template %>.helpers({
-  <%= resource %>: () => Collections.<%= collection %>.find().fetch()
+  <%= resource %>: () => Collections.<%= collection %>.findOne(new Mongo.ObjectID(FlowRouter.getParam('_id'))),
+  fields: () => Schemas.<%= collection %>._schemaKeys,
+  valueFor: (doc, field) => doc[field]
 });

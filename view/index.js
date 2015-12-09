@@ -81,7 +81,7 @@ module.exports = generators.Base.extend({
 
     let options = {
       template,
-      tableTitle: _.capitalize(lodash_inflection.pluralize(this.resource.toLowerCase())),
+      tableTitle,
       resource: lodash_inflection.pluralize(this.resource.toLowerCase()),
       collection: group
     };
