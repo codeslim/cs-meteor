@@ -21,28 +21,28 @@ module.exports = generators.Base.extend({
         message: 'Frontend framework?',
         name: 'front',
         type: 'list',
-        choices: ['blaze'],//'angular', 'react', ],
+        choices: ['blaze'/*, 'angular', 'react'*/],
         default: 'blaze'
       },
       {
         message: 'Schema system?',
         name: 'schemaSystem',
         type: 'list',
-        choices: ['none', 'aldeed:simple-schema'],
+        choices: [/*'none', */'aldeed:simple-schema'],
         default: 'aldeed:simple-schema'
       },
       {
         message: 'Collection system?',
         name: 'collectionSystem',
         type: 'list',
-        choices: ['none', 'aldeed:collection2'],
+        choices: [/*'none', */'aldeed:collection2'],
         default: 'aldeed:collection2'
       },
       {
         message: 'Router?',
         name: 'router',
         type: 'list',
-        choices: ['none', 'kadira:flow-router'],//, 'iron:router'],
+        choices: [/*'none', */'kadira:flow-router'/*, 'iron:router'*/],
         default: 'kadira:flow-router'
       },
       {
@@ -54,10 +54,10 @@ module.exports = generators.Base.extend({
       }
     ], function(answers) {
       this.front = answers.front;
-      this.schemaSystem = answers.schemaSystem;
-      this.collectionSystem = answers.collectionSystem;
-      this.router = answers.router;
-      this.userSystem = answers.userSystem;
+      this.schemaSystem = answers.schemaSystem !== 'none' ? answers.schemaSystem : undefined;
+      this.collectionSystem = answers.collectionSystem !== 'none' ? answers.collectionSystem : undefined;
+      this.router = answers.router !== 'none' ? answers.router : undefined;
+      this.userSystem = answers.userSystem !== 'none' ? answers.userSystem : undefined;
       done();
     }.bind(this));
   },
@@ -103,7 +103,7 @@ module.exports = generators.Base.extend({
   },
 
   install: function() {
-    let addList = ['add'];
+    let addList = ['add', 'check'];
     let removeList = ['remove'];
 
     addList = addList.concat(this.frontClass.getPackagesToAdd.bind(this)());
@@ -112,9 +112,9 @@ module.exports = generators.Base.extend({
     addList = addList.concat(this.routerClass.getPackagesToAdd.bind(this)());
     removeList = removeList.concat(this.routerClass.getPackagesToRemove.bind(this)());
 
-    [this.schemaSystem, this.collectionSystem, this.router].forEach(
+    [this.schemaSystem, this.collectionSystem, this.userSystem].forEach(
       component => {
-        if (component !== 'none') addList.push(component);
+        if (component) addList.push(component);
       }
     );
 
