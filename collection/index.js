@@ -1,7 +1,7 @@
 'use strict';
 
 let generators = require('yeoman-generator');
-let _ = require('lodash-inflection');
+let _ = require('inflection');
 
 module.exports = generators.NamedBase.extend({
   constructor: function() {

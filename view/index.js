@@ -3,8 +3,7 @@ let generators = require('yeoman-generator');
 let fs = require('fs');
 let path = require('path');
 let mkdirp = require('mkdirp');
-let _ = require('lodash');
-let lodash_inflection = require('lodash-inflection');
+let _ = require('inflection');
 
 module.exports = generators.Base.extend({
   constructor: function() {
@@ -62,7 +61,7 @@ module.exports = generators.Base.extend({
       case 'list':
         path = `/${group.toLowerCase()}/`;
         template = `list${group}`;
-        tableTitle = _.capitalize(lodash_inflection.pluralize(this.resource.toLowerCase()));
+        tableTitle = _.capitalize(_.pluralize(this.resource.toLowerCase()));
         break;
       case 'show':
         path = `/${group.toLowerCase()}/:_id`;
@@ -83,7 +82,7 @@ module.exports = generators.Base.extend({
     let options = {
       template,
       tableTitle,
-      resource: lodash_inflection.pluralize(this.resource.toLowerCase()),
+      resource: _.pluralize(this.resource.toLowerCase()),
       collection: group
     };
 

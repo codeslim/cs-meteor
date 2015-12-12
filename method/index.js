@@ -1,7 +1,7 @@
 'use strict';
 
 let generators = require('yeoman-generator');
-let _ = require('lodash');
+let _ = require('inflection');
 let fs = require('fs');
 let path = require('path');
 
