@@ -9,6 +9,8 @@ module.exports = generators.NamedBase.extend({
     if (!this.name.match(/^\w+$/)) this.env.error('Your collection name shoud match /^\\w+$/');
   },
 
+  _optionOrPrompt: require('yeoman-option-or-prompt'),
+
   _askForProperty: function() {
     this.prompt([
       {
@@ -38,11 +40,11 @@ module.exports = generators.NamedBase.extend({
     },
     answers => {
       if (answers.moreProperties === false) {
-        this.prompt({
+        this._optionOrPrompt([{
           message: 'Add it to its own collection?',
           name: 'addToCollection',
           type: 'confirm'
-        },
+        }],
         answers => {
           this.addToCollection = answers.addToCollection;
           done();

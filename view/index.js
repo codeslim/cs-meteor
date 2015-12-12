@@ -8,8 +8,9 @@ let _ = require('inflection');
 module.exports = generators.Base.extend({
   constructor: function() {
     generators.Base.apply(this, arguments);
-    if (this._getResources().length < 1) this.env.error('You should have at least one resource!');
   },
+
+  _optionOrPrompt: require('yeoman-option-or-prompt'),
 
   _getResources() {
     if (typeof this.resources === 'undefined') {
@@ -23,19 +24,19 @@ module.exports = generators.Base.extend({
   prompting: function() {
     let done = this.async();
 
-    this.prompt([
+    this._optionOrPrompt([
+      {
+        message: 'For which resource?',
+        type: 'list',
+        choices: this._getResources(),
+        name: 'resource'
+      },
       {
         message: 'What kind of view?',
         type: 'list',
         default: 'list',
         choices: ['list', 'show', 'new', 'edit'],
         name: 'kind'
-      },
-      {
-        message: 'For which resource?',
-        type: 'list',
-        choices: this._getResources(),
-        name: 'resource'
       },
       {
         message: 'Should I create the route for you?',
