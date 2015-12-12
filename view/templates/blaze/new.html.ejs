@@ -1,5 +1,5 @@
 <template name='<%= template %>'>
-  {{#autoForm id='new<%= collection %>' schema=Schemas.<%= collection %>}}
+  {{#autoForm id='new<%= collection %>' type='method' meteormethod='add<%= collection %>' schema=Schemas.<%= collection %>}}
     {{#each afFieldNames}}
       {{> afQuickField name=this.name}}
     {{/each}}
