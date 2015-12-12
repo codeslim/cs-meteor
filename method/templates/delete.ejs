@@ -2,6 +2,10 @@ Meteor.methods({
   remove<%= collection %>(doc) {
     check(doc, Schemas.<%= collection %>);
 
+    <% if (userSystem) { %>
+      <%- include(userSystem) %>
+    <% } %>
+
     try {
       return Collection.<%= collection %>.remove(doc);
     } catch(exception) {

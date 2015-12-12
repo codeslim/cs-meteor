@@ -48,12 +48,14 @@ module.exports = generators.Base.extend({
 
   writing: function() {
     let collection = _.capitalize(this.resource);
+    let userSystem = this.config.get('userSystem');
 
     this.fs.copyTpl(
       this.templatePath(`${this.kind}.ejs`),
       this.destinationPath(`lib/methods/${this.kind}/${this.resource}.js`),
       {
-        collection
+        collection,
+        userSystem
       }
     )
   }
