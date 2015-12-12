@@ -4,9 +4,11 @@
   </header>
 
   <nav>
-    {{#each collection in keysIn Collections}}
-      {{collection}}
+    <ul id='collections'>
+    {{#each keysIn Collections}}
+      <li>{{this}}</li>
     {{ /each }}
+    </ul>
   </nav>
 
   <section>

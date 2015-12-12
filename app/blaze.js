@@ -7,7 +7,7 @@ module.exports = class {
   static writing() {
     mkdirp.sync('client/templates/layouts');
 
-    ['default.html.ejs', 'default.css.ejs'].forEach(
+    ['default.html.ejs', 'default.css.ejs', 'default.js.ejs'].forEach(
       file => {
         this.fs.copyTpl(
           this.templatePath(`blaze/${file}`),
@@ -19,10 +19,10 @@ module.exports = class {
       }
     );
 
-    [`toJSON.js.ejs`,
-      `schemas.js.ejs`,
-      `collections.js.ejs`,
-      `keysIn.js.ejs`].forEach(
+    ['toJSON.js.ejs',
+      'schemas.js.ejs',
+      'collections.js.ejs',
+      'keysIn.js.ejs'].forEach(
         file => {
           this.fs.copyTpl(
             this.templatePath(`blaze/${file}`),

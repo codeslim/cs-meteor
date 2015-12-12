@@ -1,15 +1,15 @@
 <template name='<%= template %>'>
-  <h1><%= tableTitle %></h1>
+  <h1><%= tableTitle %> <a id='new'>[+]</a></h1>
   <table>
     <tr>
       {{#each field in fields}}
         <th>{{field}}</th>
       {{/each}}
     </tr>
-    {{#each doc in <%= resource %>}}
-      <tr>
+    {{#each <%= resource %>}}
+      <tr id='row'>
         {{#each field in fields}}
-          <td>{{valueFor doc field}}</td>
+          <td>{{valueFor this field}}</td>
         {{/each}}
       </tr>
     {{/each}}

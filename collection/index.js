@@ -64,7 +64,7 @@ module.exports = generators.NamedBase.extend({
     let collectionSystem = this.config.get('collectionSystem');
     let collectionName = _.pluralize(this.name.toLowerCase());
     let collectionVarName = _.titleize(collectionName);
-    let fileName = `${collectionName}.js`;
+    let fileName = `${collectionVarName}.js`;
 
     let schemaSystem = this.config.get('schemaSystem');
     let schemaName = `${collectionVarName}`;

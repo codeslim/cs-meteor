@@ -3,3 +3,13 @@ Template.<%= template %>.helpers({
   fields: () => Schemas.<%= collection %>._schemaKeys,
   valueFor: (doc, field) => doc[field]
 });
+
+Template.<%= template %>.events({
+  ['click a#new']() {
+    FlowRouter.go(`new<%= collection %>`);
+  },
+
+  ['click tr#row']() {
+    FlowRouter.go(`show<%= collection %>`, { _id: this._id.valueOf() });
+  }
+});
