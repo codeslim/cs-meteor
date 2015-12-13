@@ -1,7 +1,14 @@
 {
   "name": "generator-joker",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple generator for a modern meteor app",
+  "license": "MIT",
+  "repository": "antoin-m/joker-meteor",
+  "author": {
+    "name": "Michel ANTOINE",
+    "email": "michel1.antoine@epitech.eu",
+    "url": "https://github.com/antoin-m"
+  },
   "files": [
     "app",
     "collection",
@@ -11,7 +18,11 @@
     "view"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "meteor",
+    "blaze",
+    "angular",
+    "react"
   ],
   "dependencies": {
     "inflection": "^1.8.0",
