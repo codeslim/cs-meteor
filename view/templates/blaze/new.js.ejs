@@ -1,0 +1,9 @@
+Template.<%= template %>.onRendered(function() {
+  AutoForm.hooks({
+    new<%= collection %>: {
+      onSuccess(formType, result) {
+        FlowRouter.go('list<%= collection %>');
+      }
+    }
+  });
+});

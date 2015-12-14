@@ -10,6 +10,14 @@ Template.<%= template %>.events({
   },
 
   ['click tr#row']() {
-    FlowRouter.go(`show<%= collection %>`, { _id: this._id.valueOf() });
+    FlowRouter.go('show<%= collection %>', { _id: this._id.valueOf() });
+  },
+
+  ['click td#edit']() {
+    FlowRouter.go('edit<%= collection %>', { _id: this._id.valueOf() });
+  },
+
+  ['click td#delete']() {
+    Meteor.call('remove<%= collection %>', this._id);
   }
 });

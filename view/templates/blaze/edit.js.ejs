@@ -1,3 +1,13 @@
 Template.<%= template %>.helpers({
   <%= resource %>: () => Collections.<%= collection %>.findOne(new Mongo.ObjectID(FlowRouter.getParam('_id')))
 });
+
+Template.<%= template %>.onRendered(function() {
+  AutoForm.hooks({
+    edit<%= collection %>: {
+      onSuccess(formType, result) {
+        FlowRouter.go('list<%= collection %>');
+      }
+    }
+  });
+});

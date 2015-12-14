@@ -1,15 +1,10 @@
 <template name='<%= template %>'>
   <h1><%= tableTitle %></h1>
-  <table>
-    <tr>
-      {{#each field in fields}}
-        <th>{{field}}</th>
-      {{/each}}
-    </tr>
-    <tr>
-      {{#each field in fields}}
-        <td>{{valueFor <%= resource %> field}}</td>
-      {{/each}}
-    </tr>
-  </table>
+
+  <dl>
+    {{#each field in fields}}
+      <dt>{{field}}</dt>
+      <dl>{{valueFor <%= resource %> field}}</dl>
+    {{/each}}
+  </dl>
 </template>

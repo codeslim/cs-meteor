@@ -1,13 +1,13 @@
 Meteor.methods({
   remove<%= collection %>(doc) {
-    check(doc, Schemas.<%= collection %>);
+    check(doc, Mongo.ObjectID);
 
     <% if (userSystem) { %>
       <%- include(userSystem) %>
     <% } %>
 
     try {
-      return Collection.<%= collection %>.remove(doc);
+      return Collections.<%= collection %>.remove(doc);
     } catch(exception) {
       return exception;
     }

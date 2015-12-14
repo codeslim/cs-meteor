@@ -5,12 +5,16 @@
       {{#each field in fields}}
         <th>{{field}}</th>
       {{/each}}
+      <th>Edit</th>
+      <th>Remove</th>
     </tr>
     {{#each <%= resource %>}}
       <tr id='row'>
         {{#each field in fields}}
           <td>{{valueFor this field}}</td>
         {{/each}}
+        <td id='edit'>[E]</td>
+        <td id='delete'>[X]</td>
       </tr>
     {{/each}}
   </table>
