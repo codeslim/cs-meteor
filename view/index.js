@@ -90,7 +90,7 @@ module.exports = generators.Base.extend({
     require(`./${this.front}.js`).writing.bind(this)(options);
 
     if (this.route) {
-      this.composeWith('joker:route', { options: {
+      this.composeWith('cs-meteor:route', { options: {
         group,
         name: template,
         path,

@@ -1,18 +1,14 @@
-# joker-meteor
-A simple generator for a modern meteor app.
+# cs-meteor
 
-Inspired by [Rails](https://github.com/rails/rails) for its powerful generators and [The Meteor Chef's Base](https://github.com/themeteorchef/base).
+A CodeSlim generator for a modern meteor app.
 
-The aim is to provide a simple base for modern meteor apps and to help you automate all the boring stuff (creating new resources / collections / views / ...) to let you focus on the **interesting code part**.
-
-Here is how to use it :
+How to use it :
 
 ## Application
 
 ```
-$> yo joker appname
+$> yo cs-meteor appname
 ```
-
 You just created the base skeleton for your new meteor application!
 
 ## Scaffolds
@@ -26,23 +22,23 @@ Those views are used to
 * **edit** a particular document of a collection
 
 ```
-$> yo joker:scaffold person
+$> yo cs-meteor:scaffold post
 ```
 
 ## Collections
 
 ```
-$> yo joker:collection person
+$> yo cs-meteor:collection post
 ```
 
-Will create the People collection which holds Person documents.
+Will create the Posts collection which holds post documents.
 
 ## Routes
 
 To create a route try
 
 ```
-$> yo joker:route
+$> yo cs-meteor:route
 ```
 
 ## Views
@@ -50,7 +46,7 @@ $> yo joker:route
 To create a view try
 
 ```
-$> yo joker:view
+$> yo cs-meteor:view
 ```
 
 ## Methods
@@ -58,5 +54,5 @@ $> yo joker:view
 To create a meteor method try
 
 ```
-$> yo joker:method
+$> yo cs-meteor:method
 ```

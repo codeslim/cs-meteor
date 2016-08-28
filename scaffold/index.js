@@ -12,14 +12,14 @@ module.exports = generators.Base.extend({
   writing: function() {
     let name = _.titleize(_.pluralize(this.resourceName.toLowerCase()));
 
-    this.composeWith('joker:collection', {
+    this.composeWith('cs-meteor:collection', {
       options: {
         addToCollection: true
       },
       args: [name]
     });
     ['insert', 'update', 'read', 'delete'].forEach(kind => {
-        this.composeWith('joker:method', {
+        this.composeWith('cs-meteor:method', {
           options: {
             kind,
             resource: name
@@ -28,7 +28,7 @@ module.exports = generators.Base.extend({
       }
     );
     ['new', 'list', 'show', 'edit'].forEach(kind => {
-        this.composeWith('joker:view', {
+        this.composeWith('cs-meteor:view', {
           options: {
             kind,
             resource: name,
